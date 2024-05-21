@@ -1,14 +1,51 @@
+import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+
 import Wrapper from './Wrapper';
 
 const availableTimes = ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00'];
 
 const Form = () => {
+  const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      date: new Date().toISOString().split('T')[0],
+      time: availableTimes[0],
+      name: '',
+      guests: 1,
+      email: '',
+      phone: '',
+      specialNotes: '',
+    },
+    validationSchema: Yup.object({
+      date: Yup.date().required('Please select a date'),
+      time: Yup.string().required('Please select a time'),
+      name: Yup.string().required('Please enter your name'),
+      guests: Yup.number()
+        .required('Please enter the number of guests')
+        .min(1, 'Please enter at least 1 guest')
+        .max(20, 'Please enter at most 20 guests'),
+      email: Yup.string().email('Invalid email address').required('Please enter your email'),
+      phone: Yup.string().required('Please enter your phone number'),
+      specialNotes: Yup.string(),
+    }),
+    onSubmit: (values) => {
+      localStorage.setItem('formData', JSON.stringify(values));
+      navigate('/success');
+    },
+  });
+
   return (
     <div className={`bg-primary`}>
       <Wrapper>
         <h1 className={`text-accent font-serif text-3xl font-bold`}>Reserve a table</h1>
         <p className={`text-base-200 pb-4 text-lg`}>Please fill the form below:</p>
-        <form className={`text-neutral flex w-full max-w-sm flex-col gap-4 px-4`}>
+        <form
+          onSubmit={formik.handleSubmit}
+          className={`text-neutral flex w-full max-w-sm flex-col gap-4 px-4`}
+        >
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`date`}
@@ -20,8 +57,14 @@ const Form = () => {
               type={'date'}
               id={'date'}
               defaultValue={new Date().toISOString().split('T')[0]}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.date && formik.errors.date ? 'border-2 border-red-500' : ''
+              }`}
+              {...formik.getFieldProps('date')}
             />
+            {formik.touched.date && formik.errors.date && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.date}</span>
+            )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
@@ -32,7 +75,10 @@ const Form = () => {
             </label>
             <select
               id={'time'}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.time && formik.errors.time ? 'border-2 border-red-500' : ''
+              }`}
+              {...formik.getFieldProps('time')}
             >
               {availableTimes.map((time) => (
                 <option
@@ -43,6 +89,9 @@ const Form = () => {
                 </option>
               ))}
             </select>
+            {formik.touched.time && formik.errors.time && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.time}</span>
+            )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
@@ -55,8 +104,14 @@ const Form = () => {
               type={'text'}
               id={'name'}
               placeholder={`Your name`}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.name && formik.errors.name ? 'border-2 border-red-500' : ''
+              }`}
+              {...formik.getFieldProps('name')}
             />
+            {formik.touched.name && formik.errors.name && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.name}</span>
+            )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
@@ -68,11 +123,15 @@ const Form = () => {
             <input
               type={'number'}
               placeholder={`1`}
-              min="1"
-              max="20"
               id={'guests'}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.guests && formik.errors.guests ? 'border-2 border-red-500' : ''
+              }`}
+              {...formik.getFieldProps('guests')}
             />
+            {formik.touched.guests && formik.errors.guests && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.guests}</span>
+            )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
@@ -85,22 +144,33 @@ const Form = () => {
               type={'email'}
               id={'email'}
               placeholder={`your@email.com`}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.email && formik.errors.email ? 'border-2 border-red-500' : ''
+              }`}
+              {...formik.getFieldProps('email')}
             />
+            {formik.touched.email && formik.errors.email && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.email}</span>
+            )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`phone`}
               className={`text-base-200 text-lg font-bold`}
             >
-              Phone:
+              Phone Number:
             </label>
             <input
-              type={'tel'}
+              type={'text'}
               id={'phone'}
-              placeholder={`123-456-7890`}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.phone && formik.errors.phone ? 'border-2 border-red-500' : ''
+              }`}
+              {...formik.getFieldProps('phone')}
             />
+            {formik.touched.phone && formik.errors.phone && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.phone}</span>
+            )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
@@ -113,8 +183,16 @@ const Form = () => {
               id={'special-note'}
               placeholder={`Any special requests or notes?`}
               rows={4}
-              className={`bg-base-200 px-2 py-1 text-lg`}
+              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+                formik.touched.specialNotes && formik.errors.specialNotes
+                  ? 'border-2 border-red-500'
+                  : ''
+              }`}
+              {...formik.getFieldProps('specialNotes')}
             />
+            {formik.touched.specialNotes && formik.errors.specialNotes && (
+              <span className={`text-sm font-bold text-red-500`}>{formik.errors.specialNotes}</span>
+            )}
           </div>
           <button
             type={'submit'}
