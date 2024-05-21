@@ -60,15 +60,26 @@ const Form = () => {
               className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
                 formik.touched.date && formik.errors.date ? 'border-2 border-red-500' : ''
               }`}
+              aria-label={`Date`}
+              aria-invalid={formik.touched.date && formik.errors.date ? 'true' : 'false'}
+              aria-describedby={`date-description`}
               {...formik.getFieldProps('date')}
             />
             {formik.touched.date && formik.errors.date && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.date}</span>
+              <span
+                id={`date-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.date}
+              </span>
             )}
           </div>
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`time`}
+              aria-label={`Time`}
+              aria-invalid={formik.touched.time && formik.errors.time ? 'true' : 'false'}
+              aria-describedby={`time-description`}
               className={`text-base-200 text-lg font-bold`}
             >
               Time:
@@ -90,7 +101,12 @@ const Form = () => {
               ))}
             </select>
             {formik.touched.time && formik.errors.time && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.time}</span>
+              <span
+                id={`time-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.time}
+              </span>
             )}
           </div>
           <div className={`flex flex-col gap-1`}>
@@ -107,10 +123,18 @@ const Form = () => {
               className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
                 formik.touched.name && formik.errors.name ? 'border-2 border-red-500' : ''
               }`}
+              aria-label={`Name`}
+              aria-invalid={formik.touched.name && formik.errors.name ? 'true' : 'false'}
+              aria-describedby={`name-description`}
               {...formik.getFieldProps('name')}
             />
             {formik.touched.name && formik.errors.name && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.name}</span>
+              <span
+                id={`name-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.name}
+              </span>
             )}
           </div>
           <div className={`flex flex-col gap-1`}>
@@ -127,10 +151,18 @@ const Form = () => {
               className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
                 formik.touched.guests && formik.errors.guests ? 'border-2 border-red-500' : ''
               }`}
+              aria-label={`Guests`}
+              aria-invalid={formik.touched.guests && formik.errors.guests ? 'true' : 'false'}
+              aria-describedby={`guests-description`}
               {...formik.getFieldProps('guests')}
             />
             {formik.touched.guests && formik.errors.guests && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.guests}</span>
+              <span
+                id={`guests-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.guests}
+              </span>
             )}
           </div>
           <div className={`flex flex-col gap-1`}>
@@ -147,10 +179,18 @@ const Form = () => {
               className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
                 formik.touched.email && formik.errors.email ? 'border-2 border-red-500' : ''
               }`}
+              aria-label={`Email`}
+              aria-invalid={formik.touched.email && formik.errors.email ? 'true' : 'false'}
+              aria-describedby={`email-description`}
               {...formik.getFieldProps('email')}
             />
             {formik.touched.email && formik.errors.email && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.email}</span>
+              <span
+                id={`email-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.email}
+              </span>
             )}
           </div>
           <div className={`flex flex-col gap-1`}>
@@ -166,10 +206,18 @@ const Form = () => {
               className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
                 formik.touched.phone && formik.errors.phone ? 'border-2 border-red-500' : ''
               }`}
+              aria-label={`Phone`}
+              aria-invalid={formik.touched.phone && formik.errors.phone ? 'true' : 'false'}
+              aria-describedby={`phone-description`}
               {...formik.getFieldProps('phone')}
             />
             {formik.touched.phone && formik.errors.phone && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.phone}</span>
+              <span
+                id={`phone-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.phone}
+              </span>
             )}
           </div>
           <div className={`flex flex-col gap-1`}>
@@ -189,9 +237,19 @@ const Form = () => {
                   : ''
               }`}
               {...formik.getFieldProps('specialNotes')}
+              aria-label={`Special Notes`}
+              aria-invalid={
+                formik.touched.specialNotes && formik.errors.specialNotes ? 'true' : 'false'
+              }
+              aria-describedby={`special-note-description`}
             />
             {formik.touched.specialNotes && formik.errors.specialNotes && (
-              <span className={`text-sm font-bold text-red-500`}>{formik.errors.specialNotes}</span>
+              <span
+                id={`special-note-description`}
+                className={`text-sm font-bold text-red-500`}
+              >
+                {formik.errors.specialNotes}
+              </span>
             )}
           </div>
           <button

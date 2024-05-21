@@ -12,10 +12,10 @@ const Hero = () => {
           <section
             className={`mx-auto flex max-w-96 basis-2/3 flex-col items-start justify-around gap-4 self-stretch px-4 pb-8 md:max-w-full md:pb-0`}
           >
-            <div>
+            <hgroup>
               <h1 className={`text-accent font-serif text-4xl font-bold`}>Little Lemon</h1>
               <h2 className={`text-base-200 font-serif text-3xl`}>Chicago</h2>
-            </div>
+            </hgroup>
             <p className={`text-base-200 text-lg`}>
               We are a family-owned Mediterranean restaurant, focused on traditional recipes served
               with a modern twist. Located in the heart of downtown Chicago, we offer a wide variety
@@ -24,6 +24,7 @@ const Hero = () => {
             <div className={`flex flex-col gap-4 md:flex-row`}>
               <Link
                 to={`/reserve`}
+                aria-label={`Reserve a table`}
                 className={`btn btn-accent text-neutral w-56 rounded-full text-xl font-bold`}
               >
                 Reserve a table
