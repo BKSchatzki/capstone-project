@@ -4,7 +4,7 @@ import Wrapper from './Wrapper';
 
 const Hero = () => {
   return (
-    <div className={`bg-primary min-h-screen`}>
+    <div className={`bg-primary`}>
       <Wrapper>
         <main
           className={`flex flex-col items-center justify-center py-8 md:flex-row md:items-start`}
@@ -24,15 +24,9 @@ const Hero = () => {
             <div className={`flex flex-col gap-4 md:flex-row`}>
               <Link
                 to={`/reserve`}
-                className={`btn btn-accent w-56 rounded-full text-xl font-bold`}
+                className={`btn btn-accent text-neutral w-56 rounded-full text-xl font-bold`}
               >
                 Reserve a table
-              </Link>
-              <Link
-                to={`/`}
-                className={`btn btn-accent w-56 rounded-full text-xl font-bold`}
-              >
-                Weekly specials
               </Link>
             </div>
           </section>

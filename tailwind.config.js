@@ -12,8 +12,8 @@ export default {
       {
         lemon: {
           primary: '#4a5e57',
-          secondary: 'fef4eb',
-          accent: 'f3cf42',
+          secondary: '#fef4eb',
+          accent: '#f3cf42',
           'base-100': '#ffffff',
           'base-200': '#ededee',
           neutral: '#333333',
