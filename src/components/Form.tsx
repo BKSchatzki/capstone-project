@@ -40,16 +40,16 @@ const Form = () => {
   return (
     <div className={`bg-primary`}>
       <Wrapper>
-        <h1 className={`text-accent font-serif text-3xl font-bold`}>Reserve a table</h1>
-        <p className={`text-base-200 pb-4 text-lg`}>Please fill the form below:</p>
+        <h1 className={`font-serif text-3xl font-bold text-accent`}>Reserve a table</h1>
+        <p className={`pb-4 text-lg text-base-200`}>Please fill the form below:</p>
         <form
           onSubmit={formik.handleSubmit}
-          className={`text-neutral flex w-full max-w-sm flex-col gap-4 px-4`}
+          className={`flex w-full max-w-sm flex-col gap-4 px-4 text-neutral`}
         >
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`date`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               Date:
             </label>
@@ -57,7 +57,7 @@ const Form = () => {
               type={'date'}
               id={'date'}
               defaultValue={new Date().toISOString().split('T')[0]}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.date && formik.errors.date ? 'border-2 border-red-500' : ''
               }`}
               aria-label={`Date`}
@@ -80,13 +80,13 @@ const Form = () => {
               aria-label={`Time`}
               aria-invalid={formik.touched.time && formik.errors.time ? 'true' : 'false'}
               aria-describedby={`time-description`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               Time:
             </label>
             <select
               id={'time'}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.time && formik.errors.time ? 'border-2 border-red-500' : ''
               }`}
               {...formik.getFieldProps('time')}
@@ -112,7 +112,7 @@ const Form = () => {
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`name`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               Name:
             </label>
@@ -120,7 +120,7 @@ const Form = () => {
               type={'text'}
               id={'name'}
               placeholder={`Your name`}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.name && formik.errors.name ? 'border-2 border-red-500' : ''
               }`}
               aria-label={`Name`}
@@ -140,7 +140,7 @@ const Form = () => {
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`guests`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               # Guests:
             </label>
@@ -148,7 +148,7 @@ const Form = () => {
               type={'number'}
               placeholder={`1`}
               id={'guests'}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.guests && formik.errors.guests ? 'border-2 border-red-500' : ''
               }`}
               aria-label={`Guests`}
@@ -168,7 +168,7 @@ const Form = () => {
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`email`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               Email:
             </label>
@@ -176,7 +176,7 @@ const Form = () => {
               type={'email'}
               id={'email'}
               placeholder={`your@email.com`}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.email && formik.errors.email ? 'border-2 border-red-500' : ''
               }`}
               aria-label={`Email`}
@@ -196,14 +196,14 @@ const Form = () => {
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`phone`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               Phone Number:
             </label>
             <input
               type={'text'}
               id={'phone'}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.phone && formik.errors.phone ? 'border-2 border-red-500' : ''
               }`}
               aria-label={`Phone`}
@@ -223,7 +223,7 @@ const Form = () => {
           <div className={`flex flex-col gap-1`}>
             <label
               htmlFor={`special-note`}
-              className={`text-base-200 text-lg font-bold`}
+              className={`text-lg font-bold text-base-200`}
             >
               Special Notes:
             </label>
@@ -231,7 +231,7 @@ const Form = () => {
               id={'special-note'}
               placeholder={`Any special requests or notes?`}
               rows={4}
-              className={`bg-base-200 rounded-md px-2 py-1 text-lg ${
+              className={`rounded-md bg-base-200 px-2 py-1 text-lg ${
                 formik.touched.specialNotes && formik.errors.specialNotes
                   ? 'border-2 border-red-500'
                   : ''

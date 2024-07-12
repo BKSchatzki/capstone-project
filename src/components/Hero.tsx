@@ -13,10 +13,10 @@ const Hero = () => {
             className={`mx-auto flex max-w-96 basis-2/3 flex-col items-start justify-around gap-4 self-stretch px-4 pb-8 md:max-w-full md:pb-0`}
           >
             <hgroup>
-              <h1 className={`text-accent font-serif text-4xl font-bold`}>Little Lemon</h1>
-              <h2 className={`text-base-200 font-serif text-3xl`}>Chicago</h2>
+              <h1 className={`font-serif text-4xl font-bold text-accent`}>Little Lemon</h1>
+              <h2 className={`font-serif text-3xl text-base-200`}>Chicago</h2>
             </hgroup>
-            <p className={`text-base-200 text-lg`}>
+            <p className={`text-lg text-base-200`}>
               We are a family-owned Mediterranean restaurant, focused on traditional recipes served
               with a modern twist. Located in the heart of downtown Chicago, we offer a wide variety
               of acclaimed dishes and an exceptional commitment to service.
@@ -25,7 +25,7 @@ const Hero = () => {
               <Link
                 to={`/reserve`}
                 aria-label={`Reserve a table`}
-                className={`btn btn-accent text-neutral w-56 rounded-full text-xl font-bold`}
+                className={`btn btn-accent w-56 rounded-full text-xl font-bold text-neutral`}
               >
                 Reserve a table
               </Link>

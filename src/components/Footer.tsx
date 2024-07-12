@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className={`bg-secondary h-16`}>
+    <footer className={`h-16 bg-secondary`}>
       <div
         aria-label={`Footer`}
         role={`contentinfo`}

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className={`bg-secondary h-16`}>
+    <header className={`h-16 bg-secondary`}>
       <nav
         role={`navigation`}
         className={`m-auto flex h-full max-w-4xl items-center justify-between gap-4 px-2`}
